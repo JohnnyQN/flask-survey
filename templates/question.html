@@ -1,0 +1,16 @@
+<!-- templates/question.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Question {{ question_num + 1 }}</h1>
+<p>{{ question.question }}</p>
+<form method="POST" action="/answer">
+  {% for choice in question.choices %}
+  <div>
+    <input type="radio" name="answer" value="{{ choice }}" required>
+    <label>{{ choice }}</label>
+  </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
